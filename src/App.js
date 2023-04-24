@@ -1,5 +1,11 @@
 import "./App.scss";
-import { FaHome } from "react-icons/fa";
+import {
+  FaHome,
+  FaInbox,
+  FaCalendar,
+  FaCalendarAlt,
+  FaChevronDown,
+} from "react-icons/fa";
 
 function App() {
   return (
@@ -11,7 +17,52 @@ function App() {
         <h3>CC-Todolist</h3>
       </header>
 
-      <aside className="sidebar">Side Bar</aside>
+      <aside className="sidebar">
+        <section className="sidebar__generic">
+          <ul className="generic__lists">
+            <li className="active">
+              <span>
+                <FaInbox />
+              </span>
+              Inbox
+            </li>
+            <li className="active">
+              <span>
+                <FaCalendar />
+              </span>
+              Today
+            </li>
+            <li className="active">
+              <span>
+                <FaCalendarAlt />
+              </span>
+              Next 7 Days
+            </li>
+          </ul>
+        </section>
+        <section className="sidebar__middle">
+          <span>
+            <FaChevronDown />
+          </span>
+          Project
+        </section>
+        <section className="sidebar__projects">
+          <ul className="generic__lists">
+            <li className="active">
+              <span>
+                <FaInbox />
+              </span>
+              Project-A
+            </li>
+            <li className="active">
+              <span>
+                <FaInbox />
+              </span>
+              Project-B
+            </li>
+          </ul>
+        </section>
+      </aside>
       <main className="content">content</main>
     </div>
   );
