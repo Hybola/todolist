@@ -89,6 +89,9 @@ li {
     & > span {
       display: flex;
     }
+    & > h6 {
+      font-weight: 500;
+    }
   }
 }
 .sidebar__generic {
