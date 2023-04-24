@@ -15,19 +15,19 @@ export function Sidebar() {
             <span>
               <FaInbox />
             </span>
-            Inbox
+            <h6>Inbox</h6>
           </li>
           <li>
             <span>
               <FaCalendar />
             </span>
-            Today
+            <h6>Today</h6>
           </li>
           <li>
             <span>
               <FaCalendarAlt />
             </span>
-            Next 7 Days
+            <h6>Next 7 Days</h6>
           </li>
         </ul>
       </section>
@@ -35,21 +35,21 @@ export function Sidebar() {
         <span>
           <FaChevronDown />
         </span>
-        Project
+        <h6>Projects</h6>
       </section>
       <section className="sidebar__projects">
-        <ul className="generic__lists">
-          <li>
+        <ul className="project__lists">
+          <li className="">
             <span>
               <FaInbox />
             </span>
-            Project-A
+            <h6>Project-A</h6>
           </li>
           <li>
             <span>
               <FaInbox />
             </span>
-            Project-B
+            <h6>Project-B</h6>
           </li>
         </ul>
       </section>

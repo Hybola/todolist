@@ -103,4 +103,6 @@ li {
 .content {
   grid-row: 2/3;
   grid-column: 2/3;
+  overflow: scroll;
+  padding: 20px 30px;
 }
