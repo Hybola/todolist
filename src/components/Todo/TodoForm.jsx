@@ -1,9 +1,12 @@
 import styles from "./TodoForm.module.scss";
 import React, { useState } from "react";
 
-export function TodoForm({ onSetIsAddMode }) {
+// TodoForm => call in 2 Mode
+// Mode-1 : Add
+// Mode-2 : Edit
+export function TodoForm({ onSetIsShowForm, submitText, oldTask }) {
   // # 1 : Logic Section
-  const [task, setTask] = useState("");
+  const [task, setTask] = useState(oldTask || "");
   const [isError, setIsError] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,11 +20,14 @@ export function TodoForm({ onSetIsAddMode }) {
     }
 
     // set back to normal mode
-    onSetIsAddMode(false);
+    onSetIsShowForm(false);
   };
   const handleClickCancel = (e) => {
-    // console.log("Click Cancel button");
-    onSetIsAddMode(false);
+    // from <AddTodo/> for Add
+    // onSetIsAddMode?.(false);
+    // from <TodoItem/> for Edit
+    // onSetIsEditMode?.(false);
+    onSetIsShowForm?.(false);
   };
 
   const handleChangeInput = (e) => {
@@ -44,7 +50,7 @@ export function TodoForm({ onSetIsAddMode }) {
           <button type="button" onClick={handleClickCancel}>
             Cancel
           </button>
-          <button type="submit">Add Task</button>
+          <button type="submit">{submitText}</button>
         </div>
       </div>
     </form>
