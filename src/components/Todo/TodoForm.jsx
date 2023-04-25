@@ -1,15 +1,18 @@
 import styles from "./TodoForm.module.scss";
 import React, { useState } from "react";
 
-export function TodoForm() {
+export function TodoForm({ onSetIsAddMode }) {
   // # 1 : Logic Section
-  const [tasks, setTask] = useState("");
+  const [task, setTask] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Click Submit button");
+    console.log("Click Add Task button");
+    //จบ AddMode
+    onSetIsAddMode(false);
   };
   const handleClickCancel = (e) => {
     console.log("Click Cancel button");
+    onSetIsAddMode(false);
   };
 
   const handleChangeInput = (e) => {
@@ -22,7 +25,7 @@ export function TodoForm() {
       <input
         className={styles.todo__form__input}
         placeholder="Task Name"
-        value={tasks}
+        value={task}
         onChange={handleChangeInput}
       />
       <div className={styles.todo__form__footer}>
