@@ -1,5 +1,4 @@
 import {
-  FaHome,
   FaInbox,
   FaCalendar,
   FaCalendarAlt,

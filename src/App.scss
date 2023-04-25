@@ -24,7 +24,7 @@ li {
 
   & > span {
     display: flex;
-    align-items: center;
+    // align-items: center;
     cursor: pointer;
     font-size: 24px;
   }
@@ -37,11 +37,13 @@ li {
   // position: fixed;
   // left:0;
   // top:0;
+
   //content inside
   display: flex;
   flex-direction: column;
   padding: 20px 30px;
   gap: 10px;
+
   &__middle {
     display: flex;
     align-items: center;
@@ -55,46 +57,29 @@ li {
     }
   }
 }
-.generic__lists {
-  & > li {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    gap: 15px;
-    padding: 10px;
-    border-radius: 4px;
-    font-size: 20px;
-    margin: 2px 0;
-    &:hover {
-      background-color: $grey;
-    }
-    & > span {
-      display: flex;
-    }
-  }
-}
+.generic__lists,
 .project__lists {
   & > li {
     display: flex;
     align-items: center;
-    cursor: pointer;
     gap: 15px;
-    padding: 10px;
-    border-radius: 4px;
     font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
     margin: 2px 0;
+    border-radius: 4px;
+
     &:hover {
       background-color: $grey;
     }
     & > span {
       display: flex;
+      color: orange;
     }
     & > h6 {
       font-weight: 500;
     }
   }
-}
-.sidebar__generic {
 }
 
 .active {
