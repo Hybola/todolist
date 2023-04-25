@@ -8,11 +8,11 @@ import { v4 as uuidv4 } from "uuid";
 export function TodoContent() {
   const [todos, setTodos] = useState(mockData);
 
-  const handleAddTodo = () => {
+  const handleAddTodo = (newTask) => {
     // มี new todo
     let newTodoObj = {
       id: uuidv4(),
-      task: "DoHW",
+      task: newTask,
       status: false,
       due_date: "",
     };
@@ -25,8 +25,7 @@ export function TodoContent() {
   return (
     <main className="content">
       <TodoHeader />
-      <AddTodo />
-      <button onClick={handleAddTodo}>Test Add Todo</button>
+      <AddTodo onAddTodo={handleAddTodo} />
       <TodoLists todos={todos} />
     </main>
   );
