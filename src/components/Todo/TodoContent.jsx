@@ -16,17 +16,33 @@ export function TodoContent() {
       status: false,
       due_date: "",
     };
-
     // สร้าง state ใหม่
     const newTodos = [newTodoObj, ...todos];
     setTodos(newTodos);
   };
-  console.log(todos);
+  const handleEditTodo = (todoId, newTask) => {
+    console.log("##", todoId, newTask);
+    // Modify Array
+    // #1 FindIndex
+    const foundedIndex = todos.findIndex((todoObj) => todoObj.id === todoId);
+
+    // Not founded
+    if (foundedIndex == -1) return;
+
+    // Founded
+    const newTodos = [...todos];
+    // let oldTodoObj = newTodos[foundedIndex]
+    // oldTodoObj.task = newTask
+    newTodos[foundedIndex] = { ...newTodos[foundedIndex], task: newTask };
+    // { "id": 4, "task": "In congue. Etiam justo.", "status": false, "due_date": "2023-05-04" },
+    setTodos(newTodos);
+  };
+
   return (
     <main className="content">
       <TodoHeader />
       <AddTodo onAddTodo={handleAddTodo} />
-      <TodoLists todos={todos} />
+      <TodoLists todos={todos} onEditTodo={handleEditTodo} />
     </main>
   );
 }

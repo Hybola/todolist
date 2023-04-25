@@ -3,7 +3,7 @@ import { HiCheck, HiPencil, HiTrash } from "react-icons/hi";
 import { useState } from "react";
 import { TodoForm } from "./TodoForm";
 
-export function TodoItem({ todo }) {
+export function TodoItem({ todo, onEditTodo }) {
   // #1 : Logic,State
   // Check === DONE
   const [isCheck, setIsCheck] = useState(todo.status);
@@ -45,7 +45,9 @@ export function TodoItem({ todo }) {
         <TodoForm
           submitText="Edit task"
           onSetIsShowForm={setIsEdit}
-          oldTask="old-task-name"
+          // oldTask={todo.task}
+          todo={todo}
+          onEditTodo={onEditTodo}
         />
       )}
     </>

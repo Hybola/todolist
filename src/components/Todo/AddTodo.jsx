@@ -6,7 +6,7 @@ export function AddTodo({ onAddTodo }) {
   //# logic & state
   const [isAddMode, setIsAddMode] = useState(false);
   const handleClickAddTask = (e) => {
-    console.log("Open form");
+    // console.log("Open form");
     setIsAddMode(true);
   };
 
