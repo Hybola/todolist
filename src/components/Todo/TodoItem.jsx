@@ -3,25 +3,28 @@ import { HiCheck, HiPencil, HiTrash } from "react-icons/hi";
 import { useState } from "react";
 import { TodoForm } from "./TodoForm";
 
-export function TodoItem({ todo, onEditTodo }) {
+export function TodoItem({ todo, onEditTodo, onDeleteTodo }) {
   // #1 : Logic,State
   // Check === DONE
-  const [isCheck, setIsCheck] = useState(todo.status);
+  //const [isCheck, setIsCheck] = useState(todo.status);
   const [isEdit, setIsEdit] = useState(false);
   const handleToggleCheck = (e) => {
-    setIsCheck(!isCheck);
+    // setIsCheck(!isCheck);
+    onEditTodo(todo.id, { status: !todo.status }); // handleEditTodo(todo.id, {status:!todo.status})
   };
   const handleOpenEditMode = () => {
+    //console.log(`editing ${todo.id}`);
     setIsEdit(true);
   };
   const handleDeleteTodo = () => {
     console.log("click delete icon");
+    onDeleteTodo(todo.id);
   };
 
-  let checkboxStyle = isCheck
+  let checkboxStyle = todo.status
     ? styles.check__icon__done
     : styles.checkbox__icon;
-  let taskStyle = isCheck ? styles.done : "";
+  let taskStyle = todo.status ? styles.done : "";
   return (
     <>
       {!isEdit ? (
@@ -46,7 +49,7 @@ export function TodoItem({ todo, onEditTodo }) {
           submitText="Edit task"
           onSetIsShowForm={setIsEdit}
           // oldTask={todo.task}
-          todo={todo}
+          todo={todo} //ส่ง object todo ไปทั้งก้อนเลย
           onEditTodo={onEditTodo}
         />
       )}

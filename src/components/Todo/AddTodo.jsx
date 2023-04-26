@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export function AddTodo({ onAddTodo }) {
   //# logic & state
-  const [isAddMode, setIsAddMode] = useState(false);
+  const [isAddMode, setIsAddMode] = useState(false); //used for toggle on/off Add form
   const handleClickAddTask = (e) => {
     // console.log("Open form");
     setIsAddMode(true);
