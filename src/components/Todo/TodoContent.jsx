@@ -1,12 +1,12 @@
+import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 import { AddTodo } from "./AddTodo";
 import { TodoHeader } from "./TodoHeader";
 import { TodoLists } from "./TodoLists";
-import mockData from "../../data/todos.json";
-import { v4 as uuidv4 } from "uuid";
+// import mockData from '../../data/todos.json';
 
-export function TodoContent() {
-  const [todos, setTodos] = useState(mockData); //database
+export function TodoContent({ todos, setTodos }) {
+  //const [todos, setTodos] = useState(mockData); //database
   //todos = list of existing tasks
 
   const handleAddTodo = (newTask) => {

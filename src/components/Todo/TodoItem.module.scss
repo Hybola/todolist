@@ -13,6 +13,7 @@ $grey: rgb(234, 234, 234);
 
   & > p {
     flex: 1;
+    // background-color: #343434;
   }
 
   &:hover {
@@ -42,9 +43,9 @@ $grey: rgb(234, 234, 234);
 
 // effect ติ้กถูกตอน hover ที่ <li>
 // .checkbox__container:hover {
-//   .checkbox__icon {
-//     display: inline;
-//   }
+//     .checkbox__icon {
+//         display: inline;
+//     }
 // }
 
 .edit__icon,
@@ -61,4 +62,9 @@ $grey: rgb(234, 234, 234);
 
 .done {
   text-decoration: line-through;
+}
+
+.date__text {
+  color: gray;
+  font-size: 12px;
 }
