@@ -7,7 +7,7 @@ TodoForm.propTypes = {
   onSetIsShowForm: PropTypes.func.isRequired,
   onAddTodo: PropTypes.func,
   onEditTodo: PropTypes.func,
-  todo: PropTypes.oneOfType([PropTypes.object, undefined]), // undefined , {id : number | string , task : string, status : bool, due_date:string}
+  todo: PropTypes.oneOfType([PropTypes.object]), // undefined , {id : number | string , task : string, status : bool, due_date:string}
 };
 
 // TodoForm => call in 2 Mode
