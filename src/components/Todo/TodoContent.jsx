@@ -77,7 +77,7 @@ export function TodoContent({ todos, setTodos }) {
   };
   return (
     <main className="content">
-      <TodoHeader />
+      <TodoHeader title="Inbox" />
       <AddTodo onAddTodo={handleAddTodo} />
       <TodoLists
         todos={todos}
