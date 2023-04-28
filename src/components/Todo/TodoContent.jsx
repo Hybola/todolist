@@ -8,7 +8,7 @@ import { TodoLists } from "./TodoLists";
 export function TodoContent({ todos, setTodos }) {
   //const [todos, setTodos] = useState(mockData); //database
   //todos = list of existing tasks
-
+  // ADD-TODO
   const handleAddTodo = (newTask) => {
     // มี new todo
     let newTodoObj = {
@@ -25,7 +25,6 @@ export function TodoContent({ todos, setTodos }) {
     // update state โดย callback
     setTodos((currentState) => [newTodoObj, ...currentState]);
   };
-
   // UPDATE-TODO
   // const handleEditTodo = (todoId, newTask) => {
   //   console.log("##", todoId, newTask);
@@ -77,7 +76,7 @@ export function TodoContent({ todos, setTodos }) {
   };
   return (
     <main className="content">
-      <TodoHeader title="Inbox" />
+      <TodoHeader title="Today" />
       <AddTodo onAddTodo={handleAddTodo} />
       <TodoLists
         todos={todos}
