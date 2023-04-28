@@ -22,21 +22,21 @@ export function TodoItem({ todo, onEditTodo, onDeleteTodo }) {
   const [isEdit, setIsEdit] = useState(false);
   // console.log(todo.id)
 
-  const updateTodoStatus = async () => {
+  const updateTodo = async (oldTodo, updateObj) => {
     try {
-      let updateRequestObj = { ...todo, status: !todo.status };
+      let updateRequestObj = { ...oldTodo, ...updateObj };
       let response = await axios.put(
-        `http://localhost:8080/todos/${todo.id}`,
+        `http://localhost:8080/todos/${oldTodo.id}`,
         updateRequestObj
       );
       let updatedTodo = response.data.todo;
-      onEditTodo(updatedTodo.id, { status: updatedTodo.status });
+      onEditTodo(updatedTodo.id, updatedTodo);
     } catch (error) {
       console.log(error.response.status);
     }
   };
 
-  // const updateTodo = () => {
+  // const handleToggleCheck = () => {
   //   // setIsCheck(!isCheck);
   //   // true ==> false , false ==> true
   //   onEditTodo(todo.id, { status: !todo.status }); // handleEditTodo(todo.id, {status:!todo.status})
@@ -47,12 +47,23 @@ export function TodoItem({ todo, onEditTodo, onDeleteTodo }) {
     console.log(todo.id);
   };
 
-  const handleDeleteTodo = () => {
-    console.log("delete");
-    onDeleteTodo(todo.id);
+  // const handleDeleteTodo = () => {
+  //   console.log("delete");
+  //   onDeleteTodo(todo.id);
+  //   // setTodos(currentTodos => currentTodos.filter(todoObj=> todoObj.id !== todo.id))
+  // };
+
+  const handleDeleteTodo = async (todoId) => {
+    try {
+      let respone = await axios.delete(`http://localhost:8080/todos/${todoId}`);
+      console.log("delete");
+      onDeleteTodo(todoId);
+    } catch (error) {
+      console.log(error.response.status);
+    }
+
     // setTodos(currentTodos => currentTodos.filter(todoObj=> todoObj.id !== todo.id))
   };
-
   let checkboxStyle = todo.status
     ? styles.checkbox__icon__done
     : styles.checkbox__icon;
@@ -64,7 +75,7 @@ export function TodoItem({ todo, onEditTodo, onDeleteTodo }) {
         <li className={styles.todo__item__container}>
           <div
             className={styles.checkbox__container}
-            onClick={updateTodoStatus}>
+            onClick={() => updateTodo(todo, { status: !todo.status })}>
             <HiCheck className={checkboxStyle} />
           </div>
 
@@ -77,7 +88,9 @@ export function TodoItem({ todo, onEditTodo, onDeleteTodo }) {
             <HiPencil />
           </div>
 
-          <div className={styles.delete__icon} onClick={handleDeleteTodo}>
+          <div
+            className={styles.delete__icon}
+            onClick={() => handleDeleteTodo(todo.id)}>
             <HiTrash />
           </div>
 
@@ -90,7 +103,8 @@ export function TodoItem({ todo, onEditTodo, onDeleteTodo }) {
           submitText="Edit task"
           onSetIsShowForm={setIsEdit}
           // oldTask={todo.task}
-          onEditTodo={onEditTodo}
+          //onEditTodo={onEditTodo}
+          updateTodo={updateTodo}
           todo={todo}
         />
       )}

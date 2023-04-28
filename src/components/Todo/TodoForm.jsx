@@ -17,9 +17,10 @@ export function TodoForm({
   submitText,
   onSetIsShowForm,
   todo,
-  onEditTodo,
+  // onEditTodo,
   setTodos,
   setFilterList,
+  updateTodo,
 }) {
   // # 1 : Logic Section
   const [task, setTask] = useState(todo?.task || "");
@@ -55,7 +56,8 @@ export function TodoForm({
     // validate passed , execute addTodo
     // onAddTodo(task) // from <TodoContent/>
     if (todo) {
-      onEditTodo(todo.id, { task }); // send => 1.newTask 2. todoId
+      //onEditTodo(todo.id, { task }); // send => 1.newTask 2. todoId
+      updateTodo(todo, { task });
     } else {
       let now = new Date().toISOString().slice(0, 10);
       let todoObj = { task: task, status: false, date: now };

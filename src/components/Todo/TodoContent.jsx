@@ -32,12 +32,11 @@ export function TodoContent({ todos, setTodos, setFilterList }) {
     setTodos(newTodos);
     setFilterList(newTodos);
   };
-
   const handleDelete = (todoId) => {
     // #2
     setTodos((curr) => curr.filter((todoObj) => todoObj.id !== todoId));
+    setFilterList((curr) => curr.filter((todoObj) => todoObj.id !== todoId));
   };
-
   // # UI
   return (
     <main className="content">
