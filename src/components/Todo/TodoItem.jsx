@@ -5,6 +5,7 @@ import { HiCheck, HiPencil, HiTrash } from "react-icons/hi";
 import { TodoForm } from "./TodoForm";
 import { getFormattedDate } from "../../utils/DateUtils";
 import PropTypes from "prop-types";
+import { deleteTodoAPI } from "../../services/todoService";
 
 TodoItem.propTypes = {
   onAddTodo: PropTypes.func,
@@ -55,8 +56,14 @@ export function TodoItem({ todo, onEditTodo, onDeleteTodo }) {
 
   const handleDeleteTodo = async (todoId) => {
     try {
-      let respone = await axios.delete(`http://localhost:8080/todos/${todoId}`);
+      // let response = await axios.delete(
+      //   `http://localhost:8080/todos/${todoId}`
+      // );
+
+      let response = await deleteTodoAPI(todoId);
+
       console.log("delete");
+      console.log(response.status);
       onDeleteTodo(todoId);
     } catch (error) {
       console.log(error.response.status);
