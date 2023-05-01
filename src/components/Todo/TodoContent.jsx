@@ -20,11 +20,11 @@ export function TodoContent({ todos, setTodos, setFilterList }) {
     // oldTodoObj.task = newTask
 
     newTodos[foundedIndex] = { ...newTodos[foundedIndex], ...updateObj }; // ...{task: "Newtask", status : false}
-    newTodos[foundedIndex] = Object.assign(
-      {},
-      newTodos[foundedIndex],
-      updateObj
-    );
+    // newTodos[foundedIndex] = Object.assign(
+    //   {},
+    //   newTodos[foundedIndex],
+    //   updateObj
+    // );
 
     // ...newTodos[foundedIndex] === {id:1, task : "AAA",status:false : due_date: "2023-04-29"}
     //

@@ -5,7 +5,7 @@ import { HiCheck, HiPencil, HiTrash } from "react-icons/hi";
 import { TodoForm } from "./TodoForm";
 import { getFormattedDate } from "../../utils/DateUtils";
 import PropTypes from "prop-types";
-import { deleteTodoAPI } from "../../services/todoService";
+import { deleteTodoAPI, updateTodoAPI } from "../../services/todoService";
 
 TodoItem.propTypes = {
   onAddTodo: PropTypes.func,
@@ -25,11 +25,12 @@ export function TodoItem({ todo, onEditTodo, onDeleteTodo }) {
 
   const updateTodo = async (oldTodo, updateObj) => {
     try {
-      let updateRequestObj = { ...oldTodo, ...updateObj };
-      let response = await axios.put(
-        `http://localhost:8080/todos/${oldTodo.id}`,
-        updateRequestObj
-      );
+      // let updateRequestObj = { ...oldTodo, ...updateObj };
+      // let response = await axios.put(
+      //   `http://localhost:8080/todos/${oldTodo.id}`,
+      //   updateRequestObj
+      // );
+      let response = await updateTodoAPI(oldTodo, updateObj);
       let updatedTodo = response.data.todo;
       onEditTodo(updatedTodo.id, updatedTodo);
     } catch (error) {
@@ -45,7 +46,7 @@ export function TodoItem({ todo, onEditTodo, onDeleteTodo }) {
 
   const handleOpenEditMode = () => {
     setIsEdit(true);
-    console.log(todo.id);
+    //console.log(todo.id);
   };
 
   // const handleDeleteTodo = () => {
@@ -59,7 +60,6 @@ export function TodoItem({ todo, onEditTodo, onDeleteTodo }) {
       // let response = await axios.delete(
       //   `http://localhost:8080/todos/${todoId}`
       // );
-
       let response = await deleteTodoAPI(todoId);
 
       console.log("delete");

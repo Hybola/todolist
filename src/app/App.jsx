@@ -7,6 +7,7 @@ import { Sidebar } from "../components/Sidebar";
 import { TodoContent } from "../components/Todo/TodoContent";
 // import allTodoMock from '../data/todos.json';
 import { getSevenDayRange } from "../utils/DateUtils";
+import { getTodosAPI } from "../services/todoService";
 
 function App() {
   // ## LOGIC : HOOK
@@ -19,7 +20,8 @@ function App() {
     async function fetchAllTodo() {
       try {
         // let response = await axios({method:'get', url: "http://localhost:8080/todos"})
-        let response = await axios.get("http://localhost:8080/todos");
+        // let response = await axios.get("http://localhost:8080/todos");
+        let response = await getTodosAPI();
         let todoList = response.data.todos;
         setTodos(todoList);
         setFilterList(todoList);
@@ -30,8 +32,6 @@ function App() {
 
     fetchAllTodo();
   }, []);
-
-  useEffect(() => {});
 
   // ## LOGIC : FN ต่างๆ
   // Filter Todo
@@ -60,6 +60,11 @@ function App() {
       todoObj.task.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
     );
     // setTodos(newTodo)
+    setFilterList(newTodo);
+  };
+  ///// To be continue later.... this function
+  const searchByDate = (date) => {
+    const newTodo = todos.filter((todoObj) => todoObj.date == date);
     setFilterList(newTodo);
   };
 
